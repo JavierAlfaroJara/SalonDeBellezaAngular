@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from '../../vista-lista-usuarios/vista-lista-usuarios.component';
 
 @Component({
   selector: 'app-dialogo-ver-citas-usuario',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogoVerCitasUsuarioComponent implements OnInit {
 
-  constructor() { }
+  id = ""
+  name = ""
+
+  datos: any;
+  panelOpenState = false;
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogoVerCitasUsuarioComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) {
+    this.datos = data
+  }
 
   ngOnInit(): void {
+    this.id = this.datos.id,
+    this.name = this.datos.name
   }
 
 }

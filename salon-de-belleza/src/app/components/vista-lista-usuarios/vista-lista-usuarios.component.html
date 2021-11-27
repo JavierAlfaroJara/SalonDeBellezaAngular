@@ -1,1 +1,32 @@
-<p>vista-lista-usuarios works!</p>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="text-align: center; margin-bottom: 100px;">
+    <!-- Username Column -->
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+      <td mat-cell *matCellDef="let element"> {{element.user_name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre completo </th>
+      <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo electrónico </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Citas </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button class="ButtomActions" (click)= "openDialog(element.id, element.full_name)">
+          <span class="material-icons" id="icons2">open_in_new</span>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+ </table>
