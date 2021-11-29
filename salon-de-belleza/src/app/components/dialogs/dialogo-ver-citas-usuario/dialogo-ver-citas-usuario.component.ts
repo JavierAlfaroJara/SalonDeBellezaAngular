@@ -66,11 +66,16 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
 
       await new Promise(f => setTimeout(f, 250));
 
+      let fechaTemp = actual.fecha
+      let fechaSplit = fechaTemp.split("T",2)
+      console.log(fechaSplit)
+      let fechaYHora = fechaSplit[0] + " " + fechaSplit[1] 
+
       let json = {
         id: actual.cita,
         idCliente: actual.cliente,
         usernameCliente: actual.user_name,
-        fecha: actual.fecha,
+        fecha: fechaYHora,
         descripcion: actual.descripcion,
         detalles: this.auxiliar
       }
@@ -86,7 +91,7 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
     this.items = []
     CITA_ELEMENT.forEach(actual => {
       let item = {
-        title: "Fecha de la cita: " + actual.fecha,
+        title: "Fecha y hora de la cita: " + actual.fecha,
         description: "Cita de " + actual.descripcion,
         content: actual.detalles
       }
