@@ -1,30 +1,27 @@
 <h1 style="text-align: center;">Citas de {{name}}</h1>
-<mat-list role="list">
-  <!-- Por cita en la lista hacer esto -->
-  <br>
-  <mat-list-item role="listitem">
-    <mat-expansion-panel
-                        (opened)="panelOpenState = true"
-                        (closed)="panelOpenState = false">
+
+<div *ngIf="!loading">
+  <div *ngFor="let item of items" style="margin-top: 5%;">
+    <mat-expansion-panel  (opened)="panelOpenState = true"
+                          (closed)="panelOpenState = false">
 
       <!-- Aqui va el header del expansible -->
       <!-- For cita en lista hacer estos -->
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <!-- Aqui va la fecha de la cita -->
-          Fecha de la cita: *inserte fecha*
+        <!-- Aqui va la fecha de la cita -->
+          {{item.title}}
         </mat-panel-title>
         <mat-panel-description>
-          <!-- Aqui va el primer servicio de la cita -->
-          "Cita de *inserte servicio*"
+        <!-- Aqui va el primer servicio de la cita -->
+          {{item.description}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-
       <!-- Aqui va el contenido del expansible -->
       <!-- Cuando le da a expandir se actualiza el contenido -->
-      <p>*Descripción de la cita misma* {{panelOpenState}}</p>
+      <p>{{item.content}}</p>
     </mat-expansion-panel>
-    <br><br>
-  </mat-list-item>
-</mat-list>
+  </div>
+</div>
+
 <br>

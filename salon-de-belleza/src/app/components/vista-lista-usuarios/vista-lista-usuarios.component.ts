@@ -1,13 +1,24 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { UsersServiceService } from 'src/app/Services/users-service.service';
 import { DialogoVerCitasUsuarioComponent } from '../dialogs/dialogo-ver-citas-usuario/dialogo-ver-citas-usuario.component';
 
 export interface DialogData{
   id: string
   name: string
 }
+
+export interface cliente{
+    id: number;
+    full_name: string;
+    user_name: string;
+    email: string;
+    fecha: string
+}
+
+let ELEMENT_DATA: cliente[] = [];
 
 @Component({
   selector: 'app-vista-lista-usuarios',
@@ -17,45 +28,46 @@ export interface DialogData{
 
 export class VistaListaUsuariosComponent implements OnInit {
 
-  ELEMENT_DATA: any[] = []
-  Clientes: any;
+  Clientes: cliente[] = [];
   infoClientes: any;
   
   constructor(
-    // private dialogService: DialogsServiceService,
+    private clientService : UsersServiceService,
     public dialog: MatDialog
   ) { }
 
   displayedColumns: string[] = ['user','nombre', 'email', 'actions'];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  dataSource = new MatTableDataSource<cliente>(ELEMENT_DATA);
 
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;
   ngOnInit(): void {
-    this.generarClientes();
     this.dataSource.sort = this.sort;
+    this.getClientes();
   }
 
-  generarClientes(){
+  getClientes(){
+    this.clientService.getClients().subscribe(
+      (response) =>{
+        this.Clientes = response
+        this.cargarClientes(this.Clientes)
+      });
+  }
 
-    // To-do: esto se descomenta cuando se agreguen los servicios pertinentes 
+  cargarClientes(data: any){
+    ELEMENT_DATA = [];
 
-    // this.clientService.getClients().subscribe(
-    //   (response: any) =>{
-    //     this.Clientes = response
-    //     this.dataSource = this.Clientes.results
-    //   });
-
-    // To-do: esto se borra cuando se agreguen los servicios pertinentes 
-    let json = {
-      id: 1,
-      full_name: "Sabri Araya",
-      user_name: "Sabrux",
-      email: "sabrux@gmail.com",
-      fecha: "0001-01-01T00:00:00"
-    }
-    this.ELEMENT_DATA.push(json);
-    
+    data.forEach((actual: { id: any; full_name: any; user_name: any; email: any; fecha: any; }) => {
+      let json = {
+        id: actual.id,
+        full_name: actual.full_name,
+        user_name: actual.user_name,
+        email: actual.email,
+        fecha: actual.fecha
+      }
+      ELEMENT_DATA.push(json)
+    });
+    this.dataSource = new MatTableDataSource<cliente>(ELEMENT_DATA);
   }
 
   openDialog(id: any, full_name: any): void {
