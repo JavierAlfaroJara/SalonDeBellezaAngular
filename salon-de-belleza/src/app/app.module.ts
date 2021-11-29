@@ -23,12 +23,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { TopClientesComponent } from './components/top-clientes/top-clientes.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     VistaListaUsuariosComponent,
-    DialogoVerCitasUsuarioComponent
+    DialogoVerCitasUsuarioComponent,
+    TopClientesComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatInputModule,
     MatIconModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
