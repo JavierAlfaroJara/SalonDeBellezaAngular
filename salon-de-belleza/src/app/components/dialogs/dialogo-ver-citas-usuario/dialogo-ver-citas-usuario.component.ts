@@ -68,7 +68,6 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
 
       let fechaTemp = actual.fecha
       let fechaSplit = fechaTemp.split("T",2)
-      console.log(fechaSplit)
       let fechaYHora = fechaSplit[0] + " " + fechaSplit[1] 
 
       let json = {
@@ -79,7 +78,6 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
         descripcion: actual.descripcion,
         detalles: this.auxiliar
       }
-      console.log(json)
       CITA_ELEMENT.push(json)
     });
 

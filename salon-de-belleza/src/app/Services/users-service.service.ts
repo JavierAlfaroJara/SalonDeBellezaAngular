@@ -27,6 +27,7 @@ export class UsersServiceService {
   getInfoCita(param: any){
     return this.http.get(`${this.URL_USERS}/AppointmentServices?Id=${param}`);
   }
+  
   // servicio para iniciar sesion como administrador 
   logIn(email: string,password:string){
     return this.http.get(`${this.URL_USERS}/logIN/administrator?email=${email}&password=${password}`)
