@@ -10,7 +10,8 @@ export interface Cita {
   usernameCliente: string;
   fecha: string;
   descripcion: string;
-  detalles: ""
+  servicio: string;
+  costo: number
 }
 
 let CITA_ELEMENT: Cita[] = [];
@@ -31,6 +32,8 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
   auxiliar: any;
   panelOpenState = false;
   loading = true;
+  servicio = ""
+  costo: any
 
   constructor(
     private clientService: UsersServiceService,
@@ -50,6 +53,8 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
   getCitasDeCliente(){
     this.clientService.getCitasDeCliente(this.id).subscribe(
       (response) => {
+        console.log("Sigue el response")
+        console.log(response)
         this.cargarCitas(response)
       })
   }
@@ -58,10 +63,15 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
     CITA_ELEMENT = [];
 
     data.forEach(async (actual: any) => {
+            
+      let servicio = ""
+      let costo = 0
 
       this.clientService.getInfoCita(actual.cita).subscribe(
         (response) => {
           this.auxiliar = response
+          console.log("sigue el auxiliar")
+          console.log(this.auxiliar)
         })
 
       await new Promise(f => setTimeout(f, 250));
@@ -70,15 +80,22 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
       let fechaSplit = fechaTemp.split("T",2)
       let fechaYHora = fechaSplit[0] + " " + fechaSplit[1] 
 
+      this.auxiliar.forEach((i: { servicio: string; costo: any; }) => {
+        servicio += (i.servicio + ", ")
+        costo += i.costo
+      });
+
       let json = {
         id: actual.cita,
         idCliente: actual.cliente,
         usernameCliente: actual.user_name,
         fecha: fechaYHora,
         descripcion: actual.descripcion,
-        detalles: this.auxiliar
+        servicio: servicio,
+        costo: costo
       }
       CITA_ELEMENT.push(json)
+      console.log(json)
     });
 
     await new Promise(f => setTimeout(f, 250));
@@ -87,11 +104,23 @@ export class DialogoVerCitasUsuarioComponent implements OnInit {
 
   cargarLista(){
     this.items = []
+
+    if(CITA_ELEMENT.length == 0){
+      let item = {
+        title: "No hay citas asociadas",
+        description: "",
+        content: ""
+      }
+      this.items.push(item)
+      this.loading = false
+      return
+    }
+
     CITA_ELEMENT.forEach(actual => {
       let item = {
         title: "Fecha y hora de la cita: " + actual.fecha,
         description: "Cita de " + actual.descripcion,
-        content: actual.detalles
+        content: actual.servicio + " por un costo de: " + actual.costo + " colones"
       }
       this.items.push(item)
     });
