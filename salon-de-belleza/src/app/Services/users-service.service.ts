@@ -33,4 +33,14 @@ export class UsersServiceService {
     return this.http.get(`${this.URL_USERS}/logIN/administrator?email=${email}&password=${password}`)
   }
 
+  //servicio que obtiene las ultimas visitas a la según un tiempo 
+  getLastVisits(){
+    return this.http.get(`${this.URL_USERS}/lastAppointment`)
+  } 
+
+  // servico que trae el top de los clientes que más visitan el salon, formato de fecha AAAA/MM/DD
+  getTopClients(startDate:string, endDate:string ){
+    return this.http.get(`${this.URL_USERS}/custumerVisits?fechaInicial=${startDate}&fechaFinal=${endDate}`)
+  }
+
 }

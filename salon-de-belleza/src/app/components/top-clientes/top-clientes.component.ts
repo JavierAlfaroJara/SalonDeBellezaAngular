@@ -18,16 +18,19 @@ let ELEMENT_DATA: cliente[] = []
   styleUrls: ['./top-clientes.component.css']
 })
 export class TopClientesComponent implements OnInit {
-
-  constructor() { }
+  fechaInicial="";
+  fechaFinal="";
+  constructor(private userService: UsersServiceService) { }
 
   displayedColumns: string[] = ['user','nombre', 'visitas'];
   dataSource = new MatTableDataSource<cliente>(ELEMENT_DATA);
   isFiltred = false
   start_Date: any = undefined;//Almacena la fecha de inicio
   end_Date: any = undefined;//Almacena la fecha final
+  data:any  //almacena la consulta al backend
 
   ngOnInit(): void {
+    this.getTopClients('2021/11/11','2021/12/11')
   }
 
   dateFilter = (date: Date): boolean => {
@@ -49,6 +52,13 @@ export class TopClientesComponent implements OnInit {
     }else{
       return year > startYear;
     }
+  }
+  //obtiene los clientes que más visitan el salon en un rango de tiempo
+  getTopClients(startDate:string, endDate:string){
+    this.userService.getTopClients(startDate,endDate).subscribe((response => {
+      this.data = response;
+      this.dataSource = new MatTableDataSource<cliente>(this.data);
+    }))
   }
 
 }

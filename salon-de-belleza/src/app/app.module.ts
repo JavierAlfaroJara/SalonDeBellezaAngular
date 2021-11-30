@@ -32,6 +32,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './components/home/home.component';
+import { LastClientsComponent } from './components/last-clients/last-clients.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HomeComponent } from './components/home/home.component';
     DialogoVerCitasUsuarioComponent,
     TopClientesComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LastClientsComponent
   ],
   imports: [
     BrowserModule,
