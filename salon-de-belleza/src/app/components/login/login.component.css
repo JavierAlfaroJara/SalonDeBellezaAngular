@@ -18,7 +18,7 @@
 .example-full-width {
     width: 75%;
     text-align:center;
-    color: #204441;
+    color: #204441 !important;
 }
 
 .titulo{

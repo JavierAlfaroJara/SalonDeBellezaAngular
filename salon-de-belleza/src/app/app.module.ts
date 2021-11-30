@@ -21,15 +21,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { TopClientesComponent } from './components/top-clientes/top-clientes.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { ToastrModule } from 'ngx-toastr';
     VistaListaUsuariosComponent,
     DialogoVerCitasUsuarioComponent,
     TopClientesComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     MatDatepickerModule,
     FormsModule,
+    MatTabsModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

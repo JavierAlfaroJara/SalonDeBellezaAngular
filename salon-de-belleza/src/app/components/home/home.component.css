@@ -1,0 +1,32 @@
+.header{
+    padding: auto;
+    display: flex;
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+.titulo{
+    margin-left: 41%;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+body{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: -100;
+    margin: -20px;
+}
+
+.goBack{
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: auto;
+}
+.mat-card{
+    margin: 20px;
+}
