@@ -26,13 +26,18 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { TopClientesComponent } from './components/top-clientes/top-clientes.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     VistaListaUsuariosComponent,
     DialogoVerCitasUsuarioComponent,
-    TopClientesComponent
+    TopClientesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import { FormsModule } from '@angular/forms';
     MatExpansionModule,
     HttpClientModule,
     MatDatepickerModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
