@@ -5,6 +5,7 @@ import { VistaListaUsuariosComponent } from './components/vista-lista-usuarios/v
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { LastClientsComponent } from './components/last-clients/last-clients.component';
+import { HistorialServiciosComponent } from './components/historial-servicios/historial-servicios.component'; 
 
 const routes: Routes = [
   {path: 'logIn', component: LoginComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'lista-clientes', component: VistaListaUsuariosComponent},
   {path: 'top-clientes', component: TopClientesComponent},
   {path: 'ultimas-visitas', component: LastClientsComponent},
+  {path: 'historial-servicios', component:HistorialServiciosComponent},
   {path: '**', redirectTo: 'logIn'}
 ];
 

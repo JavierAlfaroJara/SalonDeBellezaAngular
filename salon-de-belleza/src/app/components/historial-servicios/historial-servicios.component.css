@@ -1,0 +1,121 @@
+.filter{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+    align-items: baseline;
+
+}
+.date-form{
+    display: flex;
+    width: auto;
+    margin-top: 2%;
+    margin-bottom: -5%;
+}
+.date{
+    margin-left: 5%;
+}
+.buttons{
+    background-color: blueviolet;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: 2%;
+    bottom: 7px;
+}
+
+.Container{ 
+    width: 100%;
+    height: 100%;
+    display:block;
+    align-items: center;
+    justify-content: center;     
+}
+
+.boton{
+    display:block;
+    align-items: center;
+    justify-content: center;   
+}
+
+
+.inputSearch{
+    width: 50%; 
+    margin-left: 25%;
+    margin-right: 5%;  
+    margin-bottom: 7%;
+    display:block;
+    align-items: center;
+    justify-content: center; 
+    color:black;
+    font-weight: bold;
+    font-size: 90%;
+    text-align-last: center;
+}
+
+.searchButtom{
+    color:white !important;
+    margin-top: 25%;
+    background-color: orangered;
+    
+}
+.ButtomActions{
+    color: white;
+    background-color: orangered;
+}
+
+#toolbar{
+    background-color: #FF0000 !important ;
+    color: white !important;
+    align-content: center;
+    justify-content: center;
+}
+.material-icons{
+    color: white;
+}
+
+#icons2{
+    color: white !important;
+}
+
+table {
+    margin-top: 2%;
+    margin-left: 2%;
+    width: 96%;
+}
+  
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color:black !important;
+    font-size: 12px;
+}
+  
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color:white !important;
+    width: 30%;
+    
+  } 
+  
+::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: white !important;;
+   color: white;
+  }
+
+::ng-deep.mat-form-field-empty.mat-form-field-label {
+    color:black;
+    font-size: 12px;
+}
+::ng-deep.mat-focused.placeholder {
+    color: white;
+}
+
+.mat-header-cell{
+    text-align: center;
+}

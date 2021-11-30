@@ -43,4 +43,8 @@ export class UsersServiceService {
     return this.http.get(`${this.URL_USERS}/custumerVisits?fechaInicial=${startDate}&fechaFinal=${endDate}`)
   }
 
+  getHistoryServices(startDate:string, endDate:string ){
+    return this.http.get(`${this.URL_USERS}/histories?fechaInicial=${startDate}&fechaFinal=${endDate}`)
+  }
+
 }

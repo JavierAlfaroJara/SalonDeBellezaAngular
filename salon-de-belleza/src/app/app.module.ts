@@ -33,6 +33,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './components/home/home.component';
 import { LastClientsComponent } from './components/last-clients/last-clients.component';
+import { HistorialServiciosComponent } from './components/historial-servicios/historial-servicios.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LastClientsComponent } from './components/last-clients/last-clients.com
     TopClientesComponent,
     LoginComponent,
     HomeComponent,
-    LastClientsComponent
+    LastClientsComponent,
+    HistorialServiciosComponent
   ],
   imports: [
     BrowserModule,
