@@ -30,6 +30,7 @@ import { LoginComponent } from './components/login/login.component';
 
 
 import { ToastrModule } from 'ngx-toastr';
+import { LastClientsComponent } from './components/last-clients/last-clients.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ToastrModule } from 'ngx-toastr';
     VistaListaUsuariosComponent,
     DialogoVerCitasUsuarioComponent,
     TopClientesComponent,
-    LoginComponent
+    LoginComponent,
+    LastClientsComponent
   ],
   imports: [
     BrowserModule,

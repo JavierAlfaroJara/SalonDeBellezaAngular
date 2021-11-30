@@ -1,0 +1,37 @@
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" style="text-align: center; margin-bottom: 100px;">
+    <!-- Columna de nombre de usuario en el sistema -->
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+      <td mat-cell *matCellDef="let element"> {{element.user_name}} </td>
+    </ng-container>
+
+    <!-- Columna de nombre -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre completo </th>
+      <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
+    </ng-container>
+
+    <!-- Column  de cita-->
+    <ng-container matColumnDef="appointment">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Número de cita </th>
+      <td mat-cell *matCellDef="let element"> {{element.appointment}} </td>
+    </ng-container>
+
+    <!--  Columna de fecha -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de visita</th>
+        <td mat-cell *matCellDef="let element"> {{element.appointment_date | date: 'yyyy/MM/dd'}} </td> 
+    </ng-container>
+
+    <!--  Columna de descripción -->
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción de la vista</th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
