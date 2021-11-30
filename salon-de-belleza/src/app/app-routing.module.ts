@@ -6,8 +6,8 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path:'logIn', component:LoginComponent },
-  {path: 'vista-usuarios', component: VistaListaUsuariosComponent},
-  {path: 'top-usuarios', component: TopClientesComponent},
+  {path: 'lista-clientes', component: VistaListaUsuariosComponent},
+  {path: 'top-clientes', component: TopClientesComponent},
   {path: '**', redirectTo: 'logIn'}
 ];
 

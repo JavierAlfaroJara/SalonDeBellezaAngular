@@ -9,9 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 
-
-
-
 export class LoginComponent implements OnInit {
   email="";
   password="";
@@ -28,8 +25,6 @@ export class LoginComponent implements OnInit {
 
   ingresar(email:string, password:string){
 
-    console.log(email)
-    console.log(password)
     this.clientService.logIn(email,password).subscribe( (response) => {
       if(response != null){
         this.data = response
