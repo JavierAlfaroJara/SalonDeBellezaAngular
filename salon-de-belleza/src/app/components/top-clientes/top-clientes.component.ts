@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UsersServiceService } from 'src/app/Services/users-service.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 export interface cliente {
   full_name: string;
@@ -20,7 +21,8 @@ let ELEMENT_DATA: cliente[] = []
 export class TopClientesComponent implements OnInit {
   fechaInicial="";
   fechaFinal="";
-  constructor(private userService: UsersServiceService) { }
+  constructor(private userService: UsersServiceService,
+    private toastr: ToastrService) { }
 
   displayedColumns: string[] = ['user','nombre', 'visitas'];
   dataSource = new MatTableDataSource<cliente>(ELEMENT_DATA);
@@ -55,10 +57,15 @@ export class TopClientesComponent implements OnInit {
   }
   //obtiene los clientes que más visitan el salon en un rango de tiempo
   getTopClients(startDate:string, endDate:string){
-    this.userService.getTopClients(startDate,endDate).subscribe((response => {
-      this.data = response;
-      this.dataSource = new MatTableDataSource<cliente>(this.data);
-    }))
+    if(startDate == "" || endDate ==""){
+      this.toastr.error('Ninguno de los espacios de fechas puede ir en blanco');
+    }else{
+      this.userService.getTopClients(startDate,endDate).subscribe((response => {
+        this.data = response;
+        this.dataSource = new MatTableDataSource<cliente>(this.data);
+      }))
+    }
+    
   }
 
 }

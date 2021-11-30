@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UsersServiceService } from 'src/app/Services/users-service.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 export interface history {
   appointment: string;
@@ -21,7 +22,8 @@ export class HistorialServiciosComponent implements OnInit {
   fechaInicial="";
   fechaFinal="";
   data:any;
-  constructor(private userService: UsersServiceService) { }
+  constructor(private userService: UsersServiceService,
+    private toastr: ToastrService) { }
 
   displayedColumns: string[] = ['appointment','date', 'description', 'cost'];
   dataSource = new MatTableDataSource<history>(ELEMENT_DATA);
@@ -31,10 +33,15 @@ export class HistorialServiciosComponent implements OnInit {
   }
 
   getHistoryServices(fechaInicial: string,fechaFinal:string){
-    this.userService.getHistoryServices(fechaInicial,fechaFinal).subscribe((response => {
-      this.data = response;
-      this.dataSource = new MatTableDataSource<history>(this.data);
-    }))
+    if(fechaInicial == "" || fechaFinal ==""){
+      this.toastr.error('Ninguno de los espacios de fechas puede ir en blanco');
+    }else{
+      this.userService.getHistoryServices(fechaInicial,fechaFinal).subscribe((response => {
+        this.data = response;
+        this.dataSource = new MatTableDataSource<history>(this.data);
+      }))
+    }
+    
   }
 
 }
