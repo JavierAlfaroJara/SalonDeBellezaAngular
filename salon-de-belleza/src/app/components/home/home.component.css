@@ -22,11 +22,12 @@ body{
 }
 
 .goBack{
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: blueviolet;
     border-radius: 5px;
     margin-left: auto;
 }
+
 .mat-card{
     margin: 20px;
 }
