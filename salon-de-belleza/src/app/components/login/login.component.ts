@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         this.data = response
         this.toastr.success('Bienvenido de nuevo ' + this.data.full_name);
         //this.toastr.success('Hello world!', 'Toastr fun!');
-        this.router.navigateByUrl('top-usuarios')
+        this.router.navigateByUrl('top-clientes')
       }else{
         this.toastr.error('Email o contraseña incorrectos intente de nuevo');
       }

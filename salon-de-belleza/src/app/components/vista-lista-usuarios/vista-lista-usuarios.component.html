@@ -21,8 +21,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Citas </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button class="ButtomActions" (click)= "openDialog(element.id, element.full_name)">
-          <span class="material-icons" id="icons2">open_in_new</span>
+        <button mat-button class="ButtomActions" color="primary" (click)= "openDialog(element.id, element.full_name)">
+          <span class="material-icons">open_in_new</span>
         </button>
       </td>
     </ng-container>
